@@ -1,0 +1,96 @@
+{% load static %}
+
+{% block content %}
+<style>
+    .order-container {
+        width: 80%;
+        margin: 40px auto;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .order-card {
+        display: flex;
+        align-items: center;
+        background-color: #f7f7f74d;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(92, 8, 33, 0.897);
+    }
+
+    .order-image img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 20px;
+    }
+
+    .order-details {
+        flex: 1;
+    }
+
+    .order-details h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+    }
+
+    .order-details p {
+        margin: 5px 0;
+        font-size: 15px;
+    }
+
+    .no-orders {
+        text-align: center;
+        margin-top: 100px;
+        font-size: 20px;
+        color: #888;
+    }
+     body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #a362ce, #66a6ff);
+      padding: 30px 40px;
+      scroll-behavior: smooth;
+    }
+    .button{
+        background-color: #86e20da6;
+        color: rgb(0, 0, 0);
+        border-radius: 5px;
+        width: 100px;
+        height: 40px;
+    }
+
+</style>
+<h2>Your Orders</h2>
+<div class="order-container">
+   
+    {% if orders %}
+        {% for order in orders %}
+            <div class="order-card">
+                <div class="order-image">
+                    <img src="{{ order.product.image.url }}" alt="{{ order.product.name }}">
+                </div>
+                <div class="order-details">
+                    <h3>{{ order.product.name }}</h3>
+                    <p><strong>Price:</strong> ₹{{ order.product.price }}</p>
+                    <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+                    <p><strong>Status:</strong> {{ order.status|capfirst }}</p>
+                    <button onclick="confirmOrder()" class="button">Order</button>
+                   
+                    
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="no-orders">You haven't placed any orders yet.</div>
+    {% endif %}
+</div>
+<script>
+function confirmOrder() {
+    alert("✅ Order Confirmed!");
+  }
+</script>
+{% endblock %}

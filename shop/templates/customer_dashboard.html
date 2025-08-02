@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wonder - Customer Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #a362ce, #66a6ff);
+      padding: 30px 40px;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #1e88e5;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      cursor: pointer;
+      color: #a362ce;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #444;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .controls input,
+    .controls select {
+      padding: 0.6rem 1rem;
+      border: 1px solid #64b82dfa;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 5rem;
+    }
+    
+    .product-card {
+      background: linear-gradient(to right, #73d5fcc2, #a463ee);
+      padding: 30px 40px;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 7px 5px 6px rgba(75, 89, 209, 0.911);
+      text-align: center;
+      transition: 0.3s;
+      
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      max-width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product-card h3 {
+      margin: 0.8rem 0 0.3rem;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .product-card p {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #949aa0;
+      color: white;
+      margin-top: 2rem;
+      width: 1400px;
+      
+    }
+    
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+    }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .offer-card {
+      background: white;
+      color: #333;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+      position: relative;
+    }
+
+    .offer-card:hover {
+      transform: scale(1.03);
+    }
+
+    .offer-card h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: #ff4081;
+    }
+
+    .offer-card p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .offer-card .badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #ff4081;
+      color: white;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      border-radius: 6px;
+    }
+
+    .offer-card button {
+      background: #1e88e5;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .offer-card button:hover {
+      background: #1565c0;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+      .offers-section {
+      padding: 60px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .offer-box {
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .offer-box:hover {
+      transform: scale(1.05);
+    }
+
+    .offer-box h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .offer-box p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .offer-box button {
+      background: #fff;
+      color: #ee0979;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .offer-box button:hover {
+      background: #f4f4f4;
+    }
+
+    @media screen and (max-width: 600px) {
+      .offer-box h2 {
+        font-size: 1.5rem;
+      }
+    }
+    @keyframes blinkColor {
+  0%   { color: #fff; }
+  25%  { color: #ff4081; }
+  50%  { color: #ffd700; }
+  75%  { color: #00e5ff; }
+  100% { color: #fff; }
+}
+
+.blink-heading {
+  animation: blinkColor 2s infinite;
+}
+
+</style>
+
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Wonder</h1>
+    <nav>
+      <a href="{% url 'profile' %}">Profile</a>
+      <a href="{% url 'order' %}">Orders</a>
+      <a href="{% url 'logout' %}">Logout</a>
+      <a href="{% url 'product_list' %}">Products</a>
+
+      <span>Cart <span id="cart-count" class="cart-count">0</span></span>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+<div class="hero">Welcome to Wonder</div>
+
+  <!-- Search and Sort Controls -->
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Search products..." />
+    <select id="sortOrder">
+      <option value="az">Sort A–Z</option>
+      <option value="za">Sort Z–A</option>
+    </select>
+  </div>
+
+
+  <h1 class="blink-heading">Today's Best Deals 🛒</h1>
+
+  <div class="offer-grid">
+    <div class="offer-card">
+      <div class="badge">50% OFF</div>
+      <h3>Smartphones Bonanza</h3>
+      <p>Get the best deals on latest Android & iOS phones. Limited stock!</p>
+      <button>Shop Now</button>
+    </div>
+
+    <div class="offer-card">
+      <div class="badge">NEW</div>
+      <h3>Home Essentials</h3>
+      <p>Top-quality furniture & kitchenware starting at just ₹499.</p>
+      <button>Explore</button>
+    </div>
+
+    <div class="offer-card">
+      <div class="badge">FLASH SALE</div>
+      <h3>Fashion Picks</h3>
+      <p>Trendy wear for men & women at jaw-dropping prices.</p>
+      <button>Grab Now</button>
+    </div>
+
+    <div class="offer-card">
+      <div class="badge">BUY 1 GET 1</div>
+      <h3>Kids Zone</h3>
+      <p>Fun toys, books & more for your little ones. Shop with joy!</p>
+      <button>Check It Out</button>
+    </div>
+
+    <div class="offer-card">
+      <div class="badge">HOT</div>
+      <h3>Gadget Deals</h3>
+      <p>Wireless earbuds, smartwatches, and more — all at discounts.</p>
+      <button>View Offers</button>
+    </div>
+  </div>
+
+  
+  <section class="offers-section">
+    <div class="offer-box" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
+      <h2>🔥 Mega Electronics Sale</h2>
+      <p>Up to 50% off on laptops, mobiles & accessories!</p>
+      <button>Shop Now</button>
+    </div>
+
+    <div class="offer-box" style="background: linear-gradient(135deg, #f7971e, #ffd200);">
+      <h2>🛍️ Festive Fashion Fiesta</h2>
+      <p>Trendy outfits starting at just ₹299</p>
+      <button>Explore</button>
+    </div>
+
+    <div class="offer-box" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+      <h2>🚚 Free Delivery Weekend</h2>
+      <p>All orders above ₹499 come with free delivery!</p>
+      <button>Grab Deal</button>
+    </div>
+
+    <div class="offer-box" style="background: linear-gradient(135deg, #ff4e50, #f9d423);">
+      <h2>🎁 Buy 1 Get 1 Free</h2>
+      <p>On selected toys, gadgets, and home items.</p>
+      <button>See Offers</button>
+    </div>
+
+    <footer class="footer">
+      &copy; 2025 Wonder Store. All rights reserved.
+    </footer>
+
+
+
+ 
+</body>
+</html>
+
+

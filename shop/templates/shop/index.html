@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Page</title>
+<style>
+    * {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #4993e9, #914ad3);
+
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 30px;
+  gap: 30px;
+}
+
+.card {
+    margin-top: 150px;
+  width: 400px;
+  height: 400px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-panel {
+  background: linear-gradient(135deg, #6a85b6, #bac8e0);
+  color: white;
+}
+
+.left-panel h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.left-panel p {
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+.right-panel {
+  background: linear-gradient(to right, #89f7fe, #66a6ff);
+  color: white;
+  text-align: center;
+  align-items: center;
+}
+
+.right-panel h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.btn {
+  background-color: #ba68f18e;
+  color: #333;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 1em;
+  border-radius: 10px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn i {
+  margin-right: 10px;
+}
+
+.btn:hover {
+  background-color: #81dff0;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+  }
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card left-panel">
+      <h1>Welcome to Our Page</h1>
+      <p>
+        Discover amazing products tailored just for you. 
+        Shop smart with <strong>Wonder</strong>.
+        
+      </p>
+    </div>
+    <div class="card right-panel">
+      <h2>Welcome to <strong>Wonder</strong></h2>
+      <div class="button-group">
+        
+        <a href="/login" class="btn"><i class="fas fa-sign-in-alt"></i> <strong>Login</strong></a>
+        <a href="/register" class="btn"><i class="fas fa-user-plus"></i> <strong>Register</strong></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
